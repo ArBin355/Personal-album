@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="UTF-8" />
+        <title>登录</title>
+   
+        <link rel="stylesheet" type="text/css" href="css/login.css" />
+	</head>
+	<body>
+		<div class="container ">
+			<div class="content">
+                <div id="large-header" class="large-header">
+                    <canvas id="demo-canvas"></canvas>
+                    <div class="main-title">
+                       <div id="lg">
+                       <form action="index.html" method="POST"">
+                         <div id="lg_main">
+                           <div id="lg_m_1">
+                             <input name="username" value="" id="ur" />
+                           </div>
+                           <div id="lg_m_2">
+                             <input name="password" type="password" value="" id="pw" />
+                           </div>
+                           <div id="lg_m_3">
+                             <p>验证码：</p>
+                             <input name="tetx" value="" id="yz" />
+                             <div id="yzm" onclick="show()"><a href="#"></a></div>
+                           </div>
+
+                         </div>
+                        <div id="lg_foot">
+                             <input type="submit" value="Login In" id="bn" onclick="check()"/>
+                        </div>
+                        </form>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+		</div><!-- /container -->               
+        <script src="js/login.js"></script>
+          <script type="text/javascript">
+function check() { 
+    if(document.getElementById("ur").value=="") {    
+    alert("没有输入用户名！");     
+    return false;    
+  } 
+  else if(document.getElementById("pw").value=="") { 
+    alert("没有输入密码！");      
+    return false;   
+  }
+  else if(document.getElementById("yz").value=="") { 
+    alert("没有输入验证码！");      
+    return false;   
+  }
+  else if(document.getElementById("yz").value!=document.getElementById("yzm").value) { 
+    alert("验证码错误！");      
+    return false;   
+  }
+  else {     
+    return true;    
+  }
+} 
+
+function codes(n){
+      var a="azxcvbnmsdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP0123456789";
+      var b="";
+    for (var i = 0;i<n;i++){
+      var index=Math.floor(Math.random()*62);
+       b+=a.charAt(index); 
+    }
+    return b;
+    };
+    function show(){
+      document.getElementById("yzm").innerHTML=codes(4);
+     
+  }
+  window.onload=show;
+</script>
+	</body>
+</html>
